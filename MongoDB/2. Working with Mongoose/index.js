@@ -21,7 +21,7 @@ const fruit = new Fruit({
 });
 
 // Insert the defined document into the "fruits" collection
-// fruit.save().then(() => console.log("New fruit inserted successfully"));
+// await fruit.save().then(() => console.log("New fruit inserted successfully"));
 
 
 const kiwi = new Fruit({
@@ -46,8 +46,9 @@ const banana = new Fruit({
 
 
 // find all documents
-const fruits = await Fruit.find({});
-console.log(fruits);
+await Fruit.find({})
+    .then((fruits) => console.log(fruits))
+    .catch((err) => console.log(err));
 
 // Close the connection to mongoDB
 mongoose.connection.close();
