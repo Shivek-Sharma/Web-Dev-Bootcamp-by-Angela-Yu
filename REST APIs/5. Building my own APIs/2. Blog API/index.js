@@ -66,7 +66,7 @@ app.post('/posts', (req, res) => {
   };
 
   posts.push(newPost);
-  console.log(posts[lastId - 1]);
+  // console.log(posts[lastId - 1])
   res.json(newPost);
 });
 
@@ -74,17 +74,18 @@ app.post('/posts', (req, res) => {
 app.patch('/posts/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const postIndex = posts.findIndex(post => post.id === id);
-  const updatedPost = {
-    id: id,
-    title: req.body.title || posts[postIndex].title,
-    content: req.body.content || posts[postIndex].content,
-    author: req.body.author || posts[postIndex].author,
-    date: new Date(),
-  };
 
   if (postIndex > -1) {
+    const updatedPost = {
+      id: id,
+      title: req.body.title || posts[postIndex].title,
+      content: req.body.content || posts[postIndex].content,
+      author: req.body.author || posts[postIndex].author,
+      date: new Date(),
+    };
+
     posts[postIndex] = updatedPost;
-    console.log(posts[postIndex]);
+    // console.log(posts[postIndex])
     res.json(updatedPost);
   } else {
     res.sendStatus(404);

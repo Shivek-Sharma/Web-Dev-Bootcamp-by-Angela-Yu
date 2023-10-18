@@ -20,7 +20,7 @@ app.get('/random', (req, res) => {
 app.get('/jokes/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const specificJoke = jokes.find((joke) => joke.id === id);
-  const jokeIndex = jokes.indexOf(specificJoke);
+  const jokeIndex = jokes.indexOf(specificJoke); // jokeIndex = -1, if not found
   // console.log(jokeIndex))
 
   if (jokeIndex > -1) {

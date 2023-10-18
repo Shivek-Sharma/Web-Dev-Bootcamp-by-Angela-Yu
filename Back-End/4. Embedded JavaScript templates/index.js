@@ -11,7 +11,7 @@ const weekDay = date.getDay();
 
 app.get('/', (req, res) => {
     console.log(weekDay);
-    res.render('index.ejs', { getDay: weekDay }); //no need to use __dirname when 'index.ejs' is in 'views' directory
+    res.render('index.ejs', { getDay: weekDay }); //no need to use __dirname when 'index.ejs' is in './views'
 });
 
 app.listen(port, () => {
