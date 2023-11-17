@@ -42,8 +42,7 @@ const person2 = new Person({
 // person1.save()
 // person2.save()
 
-await Person.find({})
-    .then((persons) => console.log(persons))
-    .catch((err) => console.log(err));
+const persons = await Person.find({});
+console.log(persons);
 
 mongoose.connection.close();

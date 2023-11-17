@@ -3,7 +3,8 @@
 
 import mongoose from 'mongoose';
 
-mongoose.connect('mongodb://127.0.0.1:27017/fruitsDB');
+mongoose.connect('mongodb://127.0.0.1:27017/fruitsDB')
+    .then(() => console.log("MongoDB connected successfully"));
 
 const fruitSchema = new mongoose.Schema({
     name: {
@@ -16,7 +17,8 @@ const fruitSchema = new mongoose.Schema({
         max: 10
     },
     review: String
-});
+}, { timestamps: true } //adds 'createdAt' and 'updatedAt' field in the document
+);
 
 const Fruit = mongoose.model("Fruit", fruitSchema);
 
@@ -31,5 +33,6 @@ const fruit2 = new Fruit({
     review: "Peaches are so yummy"
 });
 
+// both gives error
 // fruit.save()
 // fruit2.save()

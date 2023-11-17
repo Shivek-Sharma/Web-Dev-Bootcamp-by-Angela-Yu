@@ -1,7 +1,8 @@
 import mongoose from 'mongoose';
 
 // Connect to "fruitsDB" database in mongoDB, create if it doesn't exist
-mongoose.connect('mongodb://127.0.0.1:27017/fruitsDB');
+mongoose.connect('mongodb://127.0.0.1:27017/fruitsDB')
+    .then(() => console.log("MongoDB connected successfully"));
 
 // Create a new Schema
 const fruitSchema = new mongoose.Schema({
@@ -46,9 +47,8 @@ const banana = new Fruit({
 
 
 // find all documents
-await Fruit.find({})
-    .then((fruits) => console.log(fruits))
-    .catch((err) => console.log(err));
+const fruits = await Fruit.find({});
+console.log(fruits);
 
 // Close the connection to mongoDB
 mongoose.connection.close();
